@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace Lakotron.Filters
 {
-    public class LogExceptionFilter : IExceptionFilter
+    public class LogExceptionFilter : Attribute, IExceptionFilter
     {
         public void OnException(ExceptionContext context)
         { 
             string actionName = context.ActionDescriptor.DisplayName;
             string exceptionStack = context.Exception.StackTrace;
             string exceptionMessage = context.Exception.Message;
-            //log 
+            //log
             context.Result = new ContentResult
             {
                 Content = $"In action {actionName} exception happend: \n {exceptionMessage} \n {exceptionStack}"

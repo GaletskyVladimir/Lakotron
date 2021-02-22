@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApplicationServices.IServices;
 using DomainModels.Models;
+using Lakotron.Filters;
 using Lakotron.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Lakotron.Controllers
 {
+    [LogExceptionFilter]
     public class PaymentController : Controller
     {
         private readonly IPaymentService _paymentService;
