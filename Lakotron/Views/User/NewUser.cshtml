@@ -1,0 +1,24 @@
+﻿@model UserInfoViewModel
+
+<div>
+    <h1>Thanks, Whats your name?</h1>
+</div>
+<form asp-action="CreateUser" asp-controller="User" method="post">
+    <div class="form-container">
+        <div class="field-container">
+            <label asp-for="Name">Name</label>
+            <input id="name" asp-for="Name" type="text">
+        </div>
+        <div class="field-container" hidden>
+            <label asp-for="PaymentId">PaymentId</label>
+            <input id="name" asp-for="PaymentId" readonly type="text">
+        </div>
+        <div class="field-container">
+            <label asp-for="Message">Any information you'd like to add</label>
+            <textarea id="cardnumber" type="text" asp-for="Message"></textarea>
+        </div>
+        <div>
+            <input type="submit" value="Continue" />
+        </div>
+    </div>
+</form>

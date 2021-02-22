@@ -1,0 +1,40 @@
+﻿@model PaymentViewModel
+
+<head>
+    <title>@ViewData["Title"] - Payment</title>
+    <script src="~/js/payment.js"></script>
+    <link rel="stylesheet" href="~/css/payment.css" />
+</head>
+
+<div class="payment-title">
+    <h1>Payment Information</h1>
+</div>
+<form asp-action="Pay" asp-controller="Payment" method="post">
+    <div class="form-container">
+        <div class="field-container">
+            <label asp-for="Name">Name</label>
+            <input id="name" asp-for="Name" type="text">
+        </div>
+        <div class="field-container">
+            <label asp-for="CardNumber">Card Number</label>
+            <input id="cardnumber" type="text" asp-for="CardNumber" inputmode="numeric">
+        </div>
+        <div class="field-container">
+            <label asp-for="ExpirationDate">Expiration (mm/yy)</label>
+            <input id="expirationdate" type="text" asp-for="ExpirationDate" inputmode="numeric">
+        </div>
+        <div class="field-container">
+            <label asp-for="SecurityCode">Security Code</label>
+            <input id="securitycode" type="text" asp-for="SecurityCode" inputmode="numeric">
+        </div>
+        @if (!string.IsNullOrEmpty(Model?.Error))
+        {
+            <div class="field-container">
+                <h4>@Model.Error</h4>
+            </div>
+        }
+        <div>
+            <input type="submit" value="Pay 1$" />
+        </div>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+﻿@model DonatorsViewModel
+
+<div>
+    <div>
+        <h2>Donators</h2>
+    </div>
+    <hr />
+    <div>
+        @foreach(var don in Model.Donators)
+        {
+            <div>
+                <h3>@don.Name</h3>
+                <textarea>@don.Message</textarea>
+            </div>
+            <div>
+                <a class="btn-info" asp-action="UserInfo" asp-route-id="@don.ID">View User</a>
+            </div>
+            <hr />
+        }
+    </div>
+</div>
