@@ -14,7 +14,7 @@ namespace Lakotron.Filters
             string actionName = context.ActionDescriptor.DisplayName;
             string exceptionStack = context.Exception.StackTrace;
             string exceptionMessage = context.Exception.Message;
-            //log
+            //log 
             context.Result = new ContentResult
             {
                 Content = $"In action {actionName} exception happend: \n {exceptionMessage} \n {exceptionStack}"
