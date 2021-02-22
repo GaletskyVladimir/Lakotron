@@ -10,7 +10,7 @@ namespace Lakotron.Filters
     public class LogExceptionFilter : IExceptionFilter
     {
         public void OnException(ExceptionContext context)
-        {
+        { 
             string actionName = context.ActionDescriptor.DisplayName;
             string exceptionStack = context.Exception.StackTrace;
             string exceptionMessage = context.Exception.Message;
