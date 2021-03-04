@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +9,13 @@ using System.Threading.Tasks;
 
 namespace Lakotron.Filters
 {
-    public class LastVisitFilter : IActionFilter
+    public class LastVisitFilter : IAsyncActionFilter
     {
-        public void OnActionExecuting(ActionExecutingContext context)
+        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             context.HttpContext.Response.Cookies.Append("LastVisit", DateTime.Now.ToString("dd/MM/yyyy hh-mm-ss"));
-        }
 
-        public void OnActionExecuted(ActionExecutedContext context)
-        {
-
+            await next();
         }
     }
 }

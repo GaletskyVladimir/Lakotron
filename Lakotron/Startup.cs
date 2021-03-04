@@ -5,6 +5,7 @@ using ApplicationServices.Services;
 using Lakotron.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -58,7 +59,19 @@ namespace Lakotron
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.Use(next => context =>
+            {
+                var kk = $"1. Endpoint: {context.GetEndpoint()?.DisplayName ?? "(null)"}";
+                return next(context);
+            });
+
             app.UseRouting();
+
+            app.Use(next => context =>
+            {
+                var tt = $"2. Endpoint: {context.GetEndpoint()?.DisplayName ?? "(null)"}";
+                return next(context);
+            });
 
             app.UseAuthorization();
 
